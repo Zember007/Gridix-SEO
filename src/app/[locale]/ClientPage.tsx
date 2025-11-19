@@ -66,7 +66,7 @@ const LandingPage = ({ locale }: LandingPageProps) => {
                 <>
                     <div className="absolute inset-0"
                         onClick={() => {
-                            window.open(`https://gridix.live/embed/project/85a56cab-d420-4d3e-aa37-2c21bce021a8?lang=${language}`, '_blank');
+                            window.open(`https://app.gridix.live/embed/project/85a56cab-d420-4d3e-aa37-2c21bce021a8?lang=${language}`, '_blank');
                         }}
                     >
 

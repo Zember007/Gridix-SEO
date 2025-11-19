@@ -4,6 +4,7 @@ import {
 } from '@/components/ui/dialog';
 import { X, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { useEffect } from 'react';
 
 interface DemoModalProps {
   open: boolean;
@@ -12,6 +13,60 @@ interface DemoModalProps {
 
 export const DemoModal = ({ open, onOpenChange }: DemoModalProps) => {
   const t = useTranslations('landing');
+  
+  useEffect(() => {
+    if (!open) return;
+
+    // Cal.com's official initialization function
+    /* eslint-disable @typescript-eslint/no-explicit-any, prefer-rest-params */
+    (function (C: any, A: string, L: string) {
+      const p = function (a: any, ar: any) { 
+        a.q.push(ar); 
+      };
+      const d = C.document;
+      C.Cal = C.Cal || function () {
+        const cal = C.Cal;
+        const ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api: any = function () {
+            p(api, arguments);
+          };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+    /* eslint-enable @typescript-eslint/no-explicit-any, prefer-rest-params */
+
+    // Initialize Cal with the namespace
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const Cal = (window as any).Cal;
+    Cal("init", "gridix-15min-demo", { origin: "https://app.cal.com" });
+
+    Cal.ns["gridix-15min-demo"]("inline", {
+      elementOrSelector: "#my-cal-inline-gridix-15min-demo",
+      config: { layout: "month_view" },
+      calLink: "klaster-digital/gridix-15min-demo",
+    });
+
+    Cal.ns["gridix-15min-demo"]("ui", {
+      hideEventTypeDetails: false,
+      layout: "month_view"
+    });
+  }, [open]);
   
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -68,20 +123,16 @@ export const DemoModal = ({ open, onOpenChange }: DemoModalProps) => {
             {/* Close Button */}
             <button
               onClick={() => onOpenChange(false)}
-              className="absolute top-4 right-4 w-10 h-10 bg-white"
+              className="absolute top-4 right-4 w-10 h-10"
             >
-              <X className="w-6 h-6 text-gray-600" />
+              <X className="w-6 h-6 text-white" />
             </button>
 
             {/* Cal.com Embed */}
-            <div className="h-full min-h-[500px]">
-              <iframe
-                src="https://cal.com/gridix/demo?embed=true&theme=light"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                className="rounded-xl"
-                title={t('demoModal.calendarTitle')}
+            <div className="h-full max-h-[90vh]">
+              <div 
+                style={{width: '100%', height: '100%', overflow: 'auto'}} 
+                id="my-cal-inline-gridix-15min-demo"
               />
             </div>
           </div>
