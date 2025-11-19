@@ -1,0 +1,38 @@
+{
+  "home": {
+    "title": "Gridix - Interactive Floor Plans for Real Estate | Increase Conversion by 40%",
+    "description": "Professional platform for creating interactive floor plans. Automate sales, integrate with CRM, get analytics. Increase conversion by 40%. Try 7 days free!",
+    "keywords": "interactive floor plans, real estate, property visualization, CRM integration, sales automation, apartment management, floor plan builder"
+  },
+  "pricing": {
+    "title": "Pricing & Plans - Gridix | From $129/month",
+    "description": "Flexible pricing plans for developers and agencies. From $129/month per project. 7 days free trial. No card required. CRM integration, analytics, custom domain.",
+    "keywords": "pricing, subscription plans, real estate software cost, floor plan pricing, developer tools, CRM integration pricing"
+  },
+  "contacts": {
+    "title": "Contact Gridix Support | 24/7 Help in 5 Minutes",
+    "description": "Need help? Our support team responds within 5 minutes, 24/7. Contact us via Telegram. Professional technical support for all your questions.",
+    "keywords": "support, contact, help, technical support, customer service, 24/7, telegram support"
+  },
+  "partner-program": {
+    "title": "Partner Program - Earn up to 50% Commission | Gridix",
+    "description": "Become a Gridix partner and earn 20-50% commission. Help developers sell faster with interactive floor plans. Flexible partnership levels, marketing materials included.",
+    "keywords": "partner program, affiliate, commission, real estate partnership, developer tools reseller, earn with gridix"
+  },
+  "privacy-policy": {
+    "title": "Privacy Policy - Gridix | Data Protection & GDPR",
+    "description": "Learn how Gridix protects your data. GDPR compliant, secure data storage, transparent privacy practices. Your data security is our priority.",
+    "keywords": "privacy policy, data protection, GDPR, security, data privacy, confidentiality"
+  },
+  "refund-policy": {
+    "title": "Refund Policy - Gridix | 7-Day Money Back Guarantee",
+    "description": "Our refund policy: 7-day money back guarantee. No questions asked. Fair and transparent refund process for all subscriptions.",
+    "keywords": "refund policy, money back guarantee, subscription refund, cancellation policy"
+  },
+  "terms-of-service": {
+    "title": "Terms of Service - Gridix | User Agreement",
+    "description": "Gridix Terms of Service. User agreement, service rules, rights and obligations. Read our terms before using the platform.",
+    "keywords": "terms of service, user agreement, service rules, terms and conditions, legal"
+  }
+}
+

@@ -1,0 +1,15 @@
+{
+  "locale": "ar-SA",
+  "privacy": {
+    "title": "سياسة الخصوصية",
+    "lastUpdated": "آخر تحديث:"
+  },
+  "refund": {
+    "title": "سياسة استرداد الأموال",
+    "lastUpdated": "آخر تحديث:"
+  },
+  "terms": {
+    "title": "شروط الخدمة",
+    "lastUpdated": "آخر تحديث:"
+  }
+}
