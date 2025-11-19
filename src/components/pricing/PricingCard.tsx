@@ -43,7 +43,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
 
   return (
     <div className={`rounded-2xl p-8 flex flex-col h-full ${cardClasses}`}>
-      <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
+      <h2 className="text-2xl font-bold text-gray-900">{title}</h2>
       <p className="mt-4">
         <span className="text-5xl font-extrabold text-gray-900 tracking-tight">{price}</span>
         <span className="text-lg text-gray-600 ml-1">{pricePeriod}</span>

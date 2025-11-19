@@ -85,6 +85,9 @@
   }
 }
 
+.container {
+  @apply px-[20px];
+}
 
 
 /* Mobile optimizations */

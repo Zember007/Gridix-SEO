@@ -18,9 +18,9 @@ const Logo = ({ invert }: { invert?: boolean }) => {
 
 
 
-        <h1 className={`md:text-3xl text-2xl font-bold ${invert ? 'text-white' : 'text-black'}`}>
+        <p className={`md:text-3xl text-2xl font-bold ${invert ? 'text-white' : 'text-black'}`}>
           Gridix
-        </h1>
+        </p>
     </div>
   );
 };

@@ -60,7 +60,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">{t('quickLinks')}</h4>
+            <p className="text-lg font-semibold mb-4 text-white">{t('quickLinks')}</p>
             <ul className="space-y-2 text-gray-400">
               <li><button onClick={goToAdmin} className="hover:text-blue-400 transition-colors">{t('adminPanel')}</button></li>
               <li><button onClick={goToPricing} className="hover:text-blue-400 transition-colors">{t('pricing')}</button></li>
