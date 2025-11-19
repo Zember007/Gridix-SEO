@@ -18,6 +18,6 @@ export default createMiddleware({
 export const config = {
   // Применять middleware ко всем путям кроме API, статики и файлов
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|svg|webp|ico|gif|css|js)).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|video|.*\\.(?:png|jpg|jpeg|svg|webp|ico|gif|css|js|mp4|webmanifest)).*)',
   ],
 };

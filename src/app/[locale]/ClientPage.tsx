@@ -75,7 +75,7 @@ const LandingPage = ({ locale }: LandingPageProps) => {
                     <iframe
 
                         id="gridix-widget"
-                        src={`https://gridix.live/embed/project/85a56cab-d420-4d3e-aa37-2c21bce021a8?lang=${language}`}
+                        src={`https://app.gridix.live/embed/project/85a56cab-d420-4d3e-aa37-2c21bce021a8?lang=${language}`}
                         width="100%"
                         height="100%"
                     >
