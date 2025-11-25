@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
-import { locales, AppLocale } from '@/i18n/locales';
+import { locales } from '@/i18n/locales';
 import "@/app/globals.css";
 import { Language } from "@/lib/language-utils";
 import { generateOrganizationSchema } from '@/lib/seo-utils';
@@ -12,11 +12,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  
+
   const title = "Gridix - Interactive Floor Plans for Real Estate";
   const description = "Professional platform for creating and managing interactive real estate floor plans. Create stunning visualizations, manage leads, and boost your real estate sales.";
   const url = 'https://gridix.live';
-  
+
   // Базовые метаданные (будут переопределены на страницах)
   return {
     metadataBase: new URL(url),
@@ -29,7 +29,7 @@ export async function generateMetadata({
     authors: [{ name: 'Gridix' }],
     creator: 'Gridix',
     publisher: 'Gridix',
-    
+
     // Favicon и иконки
     icons: {
       icon: [
@@ -47,10 +47,10 @@ export async function generateMetadata({
         },
       ],
     },
-    
+
     // Manifest
     manifest: '/site.webmanifest',
-    
+
     // Open Graph
     openGraph: {
       type: 'website',
@@ -68,7 +68,7 @@ export async function generateMetadata({
         },
       ],
     },
-    
+
     // Twitter Card
     twitter: {
       card: 'summary_large_image',
@@ -77,12 +77,12 @@ export async function generateMetadata({
       images: [`${url}/android-chrome-512x512.png`],
       creator: '@georgii_build',
     },
-    
+
     // Верификация
     verification: {
       google: 'your-google-verification-code',
     },
-    
+
     // Дополнительные метатеги
     other: {
       'theme-color': '#000000',
@@ -125,20 +125,32 @@ export default async function LocaleLayout({
     legal: (await import(`@/messages/${locale}/legal.json`)).default,
     seo: (await import(`@/messages/${locale}/seo.json`)).default,
   };
-  
+
   // Генерируем структурированные данные для организации
   const organizationSchema = generateOrganizationSchema();
-  
+
   return (
     <html lang={locale} className="light" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PFVTWTXM');`
+          }}
+        />
         {/* Структурированные данные для SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+
       </head>
       <body className="antialiased">
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFVTWTXM"
+          height={0} width={0} style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
