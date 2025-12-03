@@ -22,10 +22,10 @@ export default async function PartnerProgramPage({
   const { locale } = await params;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100">
       <HeroHeader />
       <PartnerProgramClient locale={locale} />
       <Footer />
-    </div>
+    </main>
   );
 }

@@ -12,11 +12,6 @@ export async function generateMetadata({
   return generatePageMetadata(locale as AppLocale, 'privacy-policy');
 }
 
-export default async function PrivacyPolicyPage({
-  params
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export default async function PrivacyPolicyPage() {
   return <PrivacyPolicyClient />;
 }

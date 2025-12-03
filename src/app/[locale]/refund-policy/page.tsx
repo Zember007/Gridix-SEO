@@ -12,11 +12,6 @@ export async function generateMetadata({
   return generatePageMetadata(locale as AppLocale, 'refund-policy');
 }
 
-export default async function RefundPolicyPage({
-  params
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export default async function RefundPolicyPage() {
   return <RefundPolicyClient />;
 }

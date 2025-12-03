@@ -18,7 +18,7 @@ export default function TermsOfServiceClient() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100">
       <Header />
 
       <main className="container mx-auto py-20 md:py-32 px-4">
@@ -375,7 +375,7 @@ export default function TermsOfServiceClient() {
       </main>
 
       <Footer />
-    </div>
+    </main>
   );
 }
 

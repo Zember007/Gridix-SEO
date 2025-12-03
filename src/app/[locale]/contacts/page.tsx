@@ -14,19 +14,14 @@ export async function generateMetadata({
   return generatePageMetadata(locale as AppLocale, 'contacts');
 }
 
-export default async function ContactsPage({
-  params
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export default async function ContactsPage() {
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100 flex flex-col">
+    <main className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-100 flex flex-col">
       <HeroHeader />
       <ContactsClient />
       <Footer />
-    </div>
+    </main>
   );
 }
 

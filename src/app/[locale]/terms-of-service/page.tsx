@@ -12,11 +12,6 @@ export async function generateMetadata({
   return generatePageMetadata(locale as AppLocale, 'terms-of-service');
 }
 
-export default async function TermsOfServicePage({
-  params
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export default async function TermsOfServicePage() {
   return <TermsOfServiceClient />;
 }

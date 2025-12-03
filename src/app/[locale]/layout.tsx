@@ -1,10 +1,39 @@
 import type { Metadata } from "next";
+import Script from "next/script";
+import localFont from "next/font/local";
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/locales';
 import "@/app/globals.css";
 import { Language } from "@/lib/language-utils";
 import { generateOrganizationSchema } from '@/lib/seo-utils';
+
+const poppins = localFont({
+  src: [
+    {
+      path: "../../assets/fonts/Poppins-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/Poppins-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/Poppins-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/Poppins-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-poppins",
+  display: "swap",
+});
 
 export async function generateMetadata({
   params
@@ -132,7 +161,9 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="light" suppressHydrationWarning>
       <head>
-        <script
+        <Script
+          id="gtm-base"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -148,7 +179,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         />
 
       </head>
-      <body className="antialiased">
+      <body className={`${poppins.className} antialiased`}>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFVTWTXM"
           height={0} width={0} style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
         <NextIntlClientProvider locale={locale} messages={messages}>

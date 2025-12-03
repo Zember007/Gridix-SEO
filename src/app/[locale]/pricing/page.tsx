@@ -22,11 +22,11 @@ export default async function PricingPage({
   const { locale } = await params;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-gray-50">
       <HeroHeader />
       <PricingClient />
       <Footer />
-    </div>
+    </main>
   );
 }
 
