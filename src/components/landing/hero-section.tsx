@@ -4,8 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Glow } from "@/components/ui/glow";
 import { cn } from "@/lib/utils";
 import { HeroStats } from "@/components/landing/hero-stats";
-import BoxAnimation from "@/components/ui/3d-box-loader-animation";
 import { useTranslations } from 'next-intl';
+import dynamic from 'next/dynamic';
+
+const BoxAnimation = dynamic(
+  () => import('@/components/ui/3d-box-loader-animation').then((m) => m.default),
+  { ssr: false }
+);
 
 
 interface HeroAction {
