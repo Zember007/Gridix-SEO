@@ -100,7 +100,9 @@ const LandingPage = ({ locale }: LandingPageProps) => {
                     </>
                 }
             >
-                <div ref={iframeContainerRef} className="w-full h-full">
+                <div
+                
+                ref={iframeContainerRef} className="w-full h-full">
                     {isIframeVisible ? (
                         <iframe
                             title="Gridix Demo"
