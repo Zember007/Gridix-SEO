@@ -58,10 +58,10 @@ const LandingPage = ({ locale }: LandingPageProps) => {
             />
 
             <DemoModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
-           {/*  <KeyMetrics /> */}
+            <KeyMetrics />
             <Problems />
             <Solution />
-          {/*   <WhyGridix /> */}
+            <WhyGridix />
 
 
             <ExpandedDemo />

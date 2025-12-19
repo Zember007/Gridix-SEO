@@ -10,24 +10,24 @@ export const WhyGridix = () => {
     {
       title: t('whyGridix.quickLaunch.title'),
       icon: (
-          <Zap className="w-8 h-8 text-white" />
+          <Zap className="w-8 h-8 text-black" />
       ),
       content: (
-        <ul className="space-y-3 text-sm text-gray-100">
+        <ul className="space-y-3 text-sm text-gray-500">
           <li className="flex items-start gap-2">
-            <span className="text-[#e98383] ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.quickLaunch.item1')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-[#e98383] ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.quickLaunch.item2')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-[#e98383] ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.quickLaunch.item3')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-[#e98383] ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.quickLaunch.item4')}</span>
           </li>
         </ul>
@@ -37,24 +37,24 @@ export const WhyGridix = () => {
     {
       title: t('whyGridix.automation.title'),
       icon: (
-          <Sparkles className="w-8 h-8 text-white" />
+          <Sparkles className="w-8 h-8 text-black" />
       ),
       content: (
-        <ul className="space-y-3 text-sm text-gray-100">
+        <ul className="space-y-3 text-sm text-gray-500">
           <li className="flex items-start gap-2">
-            <span className="text-blue-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.automation.item1')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-blue-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.automation.item2')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-blue-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.automation.item3')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-blue-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.automation.item4')}</span>
           </li>
         </ul>
@@ -64,24 +64,24 @@ export const WhyGridix = () => {
     {
       title: t('whyGridix.flexibility.title'),
       icon: (
-          <Settings className="w-8 h-8 text-white" />
+          <Settings className="w-8 h-8 text-black" />
       ),
       content: (
-        <ul className="space-y-3 text-sm text-gray-100">
+        <ul className="space-y-3 text-sm text-gray-500">
           <li className="flex items-start gap-2">
-            <span className="text-green-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.flexibility.item1')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-green-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.flexibility.item2')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-green-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.flexibility.item3')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-green-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.flexibility.item4')}</span>
           </li>
         </ul>
@@ -91,24 +91,24 @@ export const WhyGridix = () => {
     {
       title: t('whyGridix.technology.title'),
       icon: (
-          <Shield className="w-8 h-8 text-white" />
+          <Shield className="w-8 h-8 text-black" />
       ),
       content: (
-        <ul className="space-y-3 text-sm text-gray-100">
+        <ul className="space-y-3 text-sm text-gray-500">
           <li className="flex items-start gap-2">
-            <span className="text-orange-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.technology.item1')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-orange-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.technology.item2')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-orange-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.technology.item3')}</span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="text-orange-400 ">✓</span>
+            <span className="text-black ">✓</span>
             <span>{t('whyGridix.technology.item4')}</span>
           </li>
         </ul>
