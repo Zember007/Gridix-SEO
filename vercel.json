@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/widget.js",
+      "destination": "https://app.gridix.live/widget/index.js"
+    },
+    {
+      "source": "/style.css",
+      "destination": "https://app.gridix.live/widget/style.css"
+    }
+  ]
+}

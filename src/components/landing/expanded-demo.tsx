@@ -19,7 +19,7 @@ export const ExpandedDemo = () => {
           {
             title: t('expandedDemo.widget.title'),
             content: (
-              <div>
+              <div className="flex flex-col gap-4">
                 <p className="text-neutral-800">
                   {t('expandedDemo.widget.description')}
                 </p>
@@ -33,7 +33,7 @@ export const ExpandedDemo = () => {
           {
             title: t('expandedDemo.excelImport.title'),
             content: (
-              <div>
+              <div className="flex flex-col gap-4">
                 <p className="text-neutral-800">
                   {t('expandedDemo.excelImport.description')}
                 </p>
@@ -47,7 +47,7 @@ export const ExpandedDemo = () => {
           {
             title: t('expandedDemo.crmIntegration.title'),
             content: (
-              <div>
+              <div className="flex flex-col gap-4">
                 <p className="text-neutral-800">
                   {t('expandedDemo.crmIntegration.description')}
                 </p>
@@ -61,7 +61,7 @@ export const ExpandedDemo = () => {
           {
             title: t('expandedDemo.dataUpdate.title'),
             content: (
-              <div>
+              <div className="flex flex-col gap-4">
                 <p className="text-neutral-800">
                   {t('expandedDemo.dataUpdate.description')}
                 </p>
@@ -75,7 +75,7 @@ export const ExpandedDemo = () => {
           {
             title: t('expandedDemo.analytics.title'),
             content: (
-              <div>
+              <div className="flex flex-col gap-4">
                 <p className="text-neutral-800">
                   {t('expandedDemo.analytics.description')}
                 </p>
@@ -89,7 +89,7 @@ export const ExpandedDemo = () => {
           {
             title: t('expandedDemo.teamManagement.title'),
             content: (
-              <div>
+              <div className="flex flex-col gap-4">
                 <p className="text-neutral-800">
                   {t('expandedDemo.teamManagement.description')}
                 </p>

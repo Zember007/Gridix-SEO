@@ -33,39 +33,13 @@ interface LandingPageProps {
 const LandingPage = ({ locale }: LandingPageProps) => {
     const t = useTranslations('landing');
     const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
-    const [isIframeVisible, setIsIframeVisible] = useState(false);
-    const iframeContainerRef = useRef<HTMLDivElement | null>(null);
     const language = locale;
 
     const openDemoModal = () => {
         setIsDemoModalOpen(true);
     };
 
-    useEffect(() => {
-        if (!iframeContainerRef.current) return;
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setIsIframeVisible(true);
-                        observer.disconnect();
-                    }
-                });
-            },
-            {
-                root: null,
-                rootMargin: '200px',
-                threshold: 0.1,
-            }
-        );
-
-        observer.observe(iframeContainerRef.current);
-
-        return () => {
-            observer.disconnect();
-        };
-    }, []);
 
     return (
         <main className="min-h-screen">
@@ -101,22 +75,15 @@ const LandingPage = ({ locale }: LandingPageProps) => {
                 }
             >
                 <div
-                
-                ref={iframeContainerRef} className="w-full h-full">
-                    {isIframeVisible ? (
-                        <iframe
-                            title="Gridix Demo"
-                            id="gridix-widget"
-                            src={`https://app.gridix.live/embed/project/85a56cab-d420-4d3e-aa37-2c21bce021a8?lang=${language}`}
-                            width="100%"
-                            height="100%"
-                            loading="lazy"
-                        />
-                    ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-gray-100 text-gray-500 text-sm">
-                            Loading interactive demo…
-                        </div>
-                    )}
+                    className="w-full h-full">
+                    <iframe
+                        title="Gridix Demo"
+                        id="gridix-widget"
+                        src={`https://app.gridix.live/embed/project/85a56cab-d420-4d3e-aa37-2c21bce021a8?lang=${language}`}
+                        width="100%"
+                        height="100%"
+                        loading="lazy"
+                    />
                 </div>
             </ContainerScroll>
 
@@ -126,7 +93,7 @@ const LandingPage = ({ locale }: LandingPageProps) => {
 
             <Testimonials />
 
-            <CostComparison  />
+            <CostComparison />
 
             <FAQ />
 
