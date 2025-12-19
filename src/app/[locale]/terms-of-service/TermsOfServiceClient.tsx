@@ -22,7 +22,7 @@ export default function TermsOfServiceClient() {
       <Header />
 
       <main className="container mx-auto py-20 md:py-32 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <div className="flex justify-center mb-6">
               <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center">
