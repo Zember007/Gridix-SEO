@@ -7,7 +7,6 @@ import Footer from '@/components/site/Footer';
 import { HeroSection } from '@/components/landing/hero-section';
 import { KeyMetrics } from '@/components/landing/key-metrics';
 import { Problems } from '@/components/landing/problems';
-import { Solution } from '@/components/landing/solution';
 import { WhyGridix } from '@/components/landing/why-gridix';
 import { GetStarted } from '@/components/landing/get-started';
 import { CaseStudy } from '@/components/landing/case-study';
@@ -23,6 +22,11 @@ const ExpandedDemo = dynamic(
 
 const ContainerScroll = dynamic(
     () => import('@/components/landing/container-scroll-animation').then((m) => m.ContainerScroll),
+    { ssr: false }
+);
+
+const Solution = dynamic(
+    () => import('@/components/landing/solution').then((m) => m.Solution),
     { ssr: false }
 );
 
@@ -54,10 +58,10 @@ const LandingPage = ({ locale }: LandingPageProps) => {
             />
 
             <DemoModal open={isDemoModalOpen} onOpenChange={setIsDemoModalOpen} />
-            <KeyMetrics />
+           {/*  <KeyMetrics /> */}
             <Problems />
             <Solution />
-            <WhyGridix />
+          {/*   <WhyGridix /> */}
 
 
             <ExpandedDemo />

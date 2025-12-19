@@ -14,13 +14,12 @@ export const VideoPlayer = ({ src, className }: { src: string; className?: strin
             video.play().catch((error) => {
               console.log('Video play failed:', error);
             });
-          } else {
-            video.pause();
+            observer.disconnect();
           }
         });
       },
       {
-        threshold: 0.5, // Видео начинает играть, когда 50% его видно
+        threshold: 0.01, // Видео начинает играть, когда 50% его видно
       }
     );
 

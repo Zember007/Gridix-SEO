@@ -42,6 +42,8 @@ export default function RadialOrbitalTimeline({
   const lastTimeRef = useRef<number>(0);
   const targetAngleRef = useRef<number | null>(null);
   const isAnimatingToTargetRef = useRef<boolean>(false);
+  const isVisible = useRef<boolean>(false);
+
 
   const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === containerRef.current || e.target === orbitRef.current) {
@@ -84,6 +86,26 @@ export default function RadialOrbitalTimeline({
 
   // Обновление размера контейнера
   useEffect(() => {
+    if (!containerRef.current) return;
+
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            isVisible.current = true;
+          } else {
+            isVisible.current = false;
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(containerRef.current);
+
     const updateSize = () => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
@@ -96,8 +118,11 @@ export default function RadialOrbitalTimeline({
 
     updateSize();
     window.addEventListener("resize", updateSize);
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
+    return () => {
+      window.removeEventListener("resize", updateSize);
+      observer.disconnect();
+    };
+  }, [containerRef]);
 
   // Плавная анимация с requestAnimationFrame
   useEffect(() => {
@@ -108,44 +133,49 @@ export default function RadialOrbitalTimeline({
         }
 
         const deltaTime = currentTime - lastTimeRef.current;
+
+
         lastTimeRef.current = currentTime;
 
-        setRotationAngle((prev) => {
-          // Если есть целевой угол для плавного перехода
-          if (targetAngleRef.current !== null && isAnimatingToTargetRef.current) {
-            const target = targetAngleRef.current;
-            let diff = target - prev;
-            
-            // Нормализуем разницу в диапазон [-180, 180] для кратчайшего пути
-            if (diff > 180) diff -= 360;
-            if (diff < -180) diff += 360;
-            
-            // Скорость анимации к целевому углу (0.08 = плавно, 0.2 = быстрее)
-            // Меньше значение = медленнее и плавнее переход
-            const transitionSpeed = 0.08;
-            const step = diff * Math.min(1, deltaTime * transitionSpeed);
-            
-            // Если мы достаточно близко к целевому углу, завершаем анимацию
-            if (Math.abs(diff) < 0.1) {
-              isAnimatingToTargetRef.current = false;
-              targetAngleRef.current = null;
-              return target;
+        if (isVisible.current) {
+
+          setRotationAngle((prev) => {
+            // Если есть целевой угол для плавного перехода
+            if (targetAngleRef.current !== null && isAnimatingToTargetRef.current) {
+              const target = targetAngleRef.current;
+              let diff = target - prev;
+
+              // Нормализуем разницу в диапазон [-180, 180] для кратчайшего пути
+              if (diff > 180) diff -= 360;
+              if (diff < -180) diff += 360;
+
+              // Скорость анимации к целевому углу (0.08 = плавно, 0.2 = быстрее)
+              // Меньше значение = медленнее и плавнее переход
+              const transitionSpeed = 0.08;
+              const step = diff * Math.min(1, deltaTime * transitionSpeed);
+
+              // Если мы достаточно близко к целевому углу, завершаем анимацию
+              if (Math.abs(diff) < 0.1) {
+                isAnimatingToTargetRef.current = false;
+                targetAngleRef.current = null;
+                return target;
+              }
+
+              return (prev + step + 360) % 360;
             }
-            
-            return (prev + step + 360) % 360;
-          }
-          
-          // Обычное вращение, если включен autoRotate
-          if (autoRotate) {
-            // Скорость вращения: уменьшите значение для более медленного вращения
-            // Текущее значение: 0.01 (градусов за миллисекунду)
-            // Рекомендуемый диапазон: 0.01 (очень медленно) - 0.1 (быстро)
-            const rotationSpeed = 0.01;
-            return (prev + (deltaTime * rotationSpeed)) % 360;
-          }
-          
-          return prev;
-        });
+
+            // Обычное вращение, если включен autoRotate
+            if (autoRotate) {
+              // Скорость вращения: уменьшите значение для более медленного вращения
+              // Текущее значение: 0.01 (градусов за миллисекунду)
+              // Рекомендуемый диапазон: 0.01 (очень медленно) - 0.1 (быстро)
+              const rotationSpeed = 0.01;
+              return (prev + (deltaTime * rotationSpeed)) % 360;
+            }
+
+            return prev;
+          });
+        }
 
         animationFrameRef.current = requestAnimationFrame(animate);
       };
@@ -200,7 +230,6 @@ export default function RadialOrbitalTimeline({
   const calculateNodePosition = useCallback((index: number, total: number, currentRadius: number) => {
     const angle = ((index / total) * 360 + rotationAngle) % 360;
     const radian = (angle * Math.PI) / 180;
-
     const x = currentRadius * Math.cos(radian) + centerOffset.x;
     const y = currentRadius * Math.sin(radian) + centerOffset.y;
 
@@ -223,7 +252,7 @@ export default function RadialOrbitalTimeline({
       className="w-full max-w-full h-[100vw] md:h-[80vh] flex flex-col items-center justify-center "
       ref={containerRef}
       onClick={handleContainerClick}
-      style={{ maxWidth: '100vw'}}
+      style={{ maxWidth: '100vw' }}
     >
       <div className="relative w-full h-full flex items-center justify-center">
         <div
@@ -245,7 +274,7 @@ export default function RadialOrbitalTimeline({
             <div className="w-8 h-8 rounded-full bg-white/80 backdrop-blur-md"></div>
           </div>
 
-          <div 
+          <div
             className="absolute rounded-full border border-white/10"
             style={{
               width: `${orbitDiameter}px`,
@@ -278,9 +307,8 @@ export default function RadialOrbitalTimeline({
                 }}
               >
                 <div
-                  className={`absolute rounded-full -inset-1 ${
-                    isPulsing ? " duration-1000" : ""
-                  }`}
+                  className={`absolute rounded-full -inset-1 ${isPulsing ? " duration-1000" : ""
+                    }`}
                   style={{
                     background: `radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)`,
                     width: `${item.energy * 0.5 + 40}px`,
@@ -293,19 +321,17 @@ export default function RadialOrbitalTimeline({
                 <div
                   className={`
                   w-14 h-14 rounded-full flex items-center justify-center
-                  ${
-                    isExpanded
+                  ${isExpanded
                       ? "bg-white text-black"
-                   
+
                       : "bg-black text-white"
-                  }
+                    }
                   border-2 
-                  ${
-                    isExpanded
+                  ${isExpanded
                       ? "border-white shadow-lg shadow-white/30"
-                      
+
                       : "border-white/40"
-                  }
+                    }
                   transition-all duration-300 transform
                   ${isExpanded ? "scale-150" : ""}
                 `}
@@ -328,7 +354,7 @@ export default function RadialOrbitalTimeline({
                   <Card className="absolute top-20 left-1/2 -translate-x-1/2 w-64 max-w-[calc(100vw-2rem)] sm:max-w-none bg-black/90 backdrop-blur-lg border-white/30 shadow-xl shadow-white/10 overflow-visible">
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-px h-3 bg-white/50"></div>
                     <CardHeader className="pb-2">
-                    
+
                     </CardHeader>
                     <CardContent className="text-xs text-white/80">
                       <p>{item.content}</p>

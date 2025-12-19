@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { cache } from "react";
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { locales } from '@/i18n/locales';
@@ -121,18 +122,46 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Загружаем переводы напрямую из JSON файла
-  const messages = {
-    site: (await import(`@/messages/${locale}/site.json`)).default,
-    nav: (await import(`@/messages/${locale}/nav.json`)).default,
-    landing: (await import(`@/messages/${locale}/landing.json`)).default,
-    pricing: (await import(`@/messages/${locale}/pricing.json`)).default,
-    contacts: (await import(`@/messages/${locale}/contacts.json`)).default,
-    policies: (await import(`@/messages/${locale}/policies.json`)).default,
-    partnerProgram: (await import(`@/messages/${locale}/partnerProgram.json`)).default,
-    legal: (await import(`@/messages/${locale}/legal.json`)).default,
-    seo: (await import(`@/messages/${locale}/seo.json`)).default,
-  };
+  // Оптимизированная загрузка переводов:
+  // - все JSON грузятся параллельно через Promise.all
+  // - результат кешируется между рендерами для одного и того же locale
+  const getMessages = cache(async (loc: string) => {
+    const [
+      site,
+      nav,
+      landing,
+      pricing,
+      contacts,
+      policies,
+      partnerProgram,
+      legal,
+      seo,
+    ] = await Promise.all([
+      import(`@/messages/${loc}/site.json`),
+      import(`@/messages/${loc}/nav.json`),
+      import(`@/messages/${loc}/landing.json`),
+      import(`@/messages/${loc}/pricing.json`),
+      import(`@/messages/${loc}/contacts.json`),
+      import(`@/messages/${loc}/policies.json`),
+      import(`@/messages/${loc}/partnerProgram.json`),
+      import(`@/messages/${loc}/legal.json`),
+      import(`@/messages/${loc}/seo.json`),
+    ]);
+
+    return {
+      site: site.default,
+      nav: nav.default,
+      landing: landing.default,
+      pricing: pricing.default,
+      contacts: contacts.default,
+      policies: policies.default,
+      partnerProgram: partnerProgram.default,
+      legal: legal.default,
+      seo: seo.default,
+    };
+  });
+
+  const messages = await getMessages(locale);
 
   // Генерируем структурированные данные для организации
   const organizationSchema = generateOrganizationSchema();
