@@ -19,7 +19,7 @@ const HeroHeader = () => {
         { name: t('features'), href: `/${locale}/#features` },
         { name: t('pricing'), href: `/${locale}/pricing` },
         { name: t('partnerProgram'), href: `/${locale}/partner-program` },
-        { name: t('demo'), href: `/${locale}/#demo` },
+        { name: t('demo'), href: `https://app.gridix.live/${locale}/project/85a56cab-d420-4d3e-aa37-2c21bce021a8` },
         { name: t('contacts'), href: `/${locale}/contacts` }
     ]
 
