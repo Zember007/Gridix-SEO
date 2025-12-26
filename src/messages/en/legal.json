@@ -51,7 +51,20 @@
       "item4": "Sending important service notifications",
       "item5": "Improving service quality and user experience",
       "item6": "Ensuring security and preventing fraud",
-      "item7": "Complying with legal obligations"
+      "item7": "Complying with legal obligations",
+      "emailCommunications": {
+        "title": "Email Communications",
+        "text": "We send users two types of emails:",
+        "serviceRelated": {
+          "title": "Service-related emails,",
+          "description": "which are necessary for account operation, security, billing, and important service updates. These emails are sent based on contractual necessity and cannot be fully opted out."
+        },
+        "marketing": {
+          "title": "Marketing emails,",
+          "description": "including newsletters, product updates, and promotional content. These emails are sent only to users who have explicitly opted in during registration or via account settings."
+        },
+        "unsubscribe": "Users can withdraw their consent for marketing emails at any time using the unsubscribe link."
+      }
     },
     "dataSharing": {
       "title": "Data Sharing with Third Parties",

@@ -124,7 +124,7 @@ export default function PrivacyPolicyClient() {
               </CardHeader>
               <CardContent className="text-gray-700 leading-relaxed">
                 <p className="mb-4">{t('dataUsage.text')}</p>
-                <ul className="list-disc list-inside space-y-2 ml-4">
+                <ul className="list-disc list-inside space-y-2 ml-4 mb-6">
                   <li>{t('dataUsage.item1')}</li>
                   <li>{t('dataUsage.item2')}</li>
                   <li>{t('dataUsage.item3')}</li>
@@ -133,6 +133,19 @@ export default function PrivacyPolicyClient() {
                   <li>{t('dataUsage.item6')}</li>
                   <li>{t('dataUsage.item7')}</li>
                 </ul>
+                <div className="mt-6 pt-6 border-t border-gray-200">
+                  <h4 className="font-semibold text-lg mb-3">{t('dataUsage.emailCommunications.title')}</h4>
+                  <p className="mb-4">{t('dataUsage.emailCommunications.text')}</p>
+                  <ul className="list-none space-y-3 ml-0">
+                    <li>
+                      <strong>{t('dataUsage.emailCommunications.serviceRelated.title')}</strong> {t('dataUsage.emailCommunications.serviceRelated.description')}
+                    </li>
+                    <li>
+                      <strong>{t('dataUsage.emailCommunications.marketing.title')}</strong> {t('dataUsage.emailCommunications.marketing.description')}
+                    </li>
+                  </ul>
+                  <p className="mt-4">{t('dataUsage.emailCommunications.unsubscribe')}</p>
+                </div>
               </CardContent>
             </Card>
 

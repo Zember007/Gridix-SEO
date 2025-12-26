@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@builder.io/react": "^9.1.0",
     "@formatjs/intl-localematcher": "^0.6.2",
     "@paper-design/shaders-react": "^0.0.63",
     "@radix-ui/react-accordion": "^1.2.12",

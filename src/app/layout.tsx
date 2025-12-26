@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import '@/lib/builder';
+import '@/builder/components';
 
 export const metadata: Metadata = {
   title: "Gridix - Interactive Floor Plans for Real Estate",
