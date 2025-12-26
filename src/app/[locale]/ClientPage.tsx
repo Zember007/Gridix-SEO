@@ -1,6 +1,4 @@
 'use client';
-import '@/lib/builder';
-import '@/builder/components';
 import { useTranslations } from 'next-intl';
 import { useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
