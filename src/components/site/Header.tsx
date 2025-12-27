@@ -84,7 +84,14 @@ const HeroHeader = () => {
                                             <a
                                                 href={item.href}
                                                 className="text-muted-foreground hover:text-accent-foreground block duration-150">
-                                                {item.name}
+                                                {item.name === 'Features' ? (
+                                                    <>
+                                                        Featuress
+                                                        <br />
+                                                    </>
+                                                ) : (
+                                                    item.name
+                                                )}
                                             </a>
                                         </li>
                                     ))}
